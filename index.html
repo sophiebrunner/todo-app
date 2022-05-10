@@ -6,13 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Sophie Brunner" />
     <meta name="description" content="Basic To-do-App with state management" />
-    <title>Get stuff done.</title>
+    <title>To-do-App</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <input type="text" name="" id="new-todo" />
+    <header class="page-header"><h1>To-do-App</h1></header>
+    <input
+      type="text"
+      id="new-todo"
+      required
+      minlength="5"
+      placeholder="Get sh*t done!"
+    />
+    <button id="add-todo">Add</button>
+    <div id="filter">
+      <input
+        type="radio"
+        name="filter"
+        id="filter-open"
+        value="open"
+        checked="checked"
+      />
+      <label for="filter-open">Open To-Dos.</label>
+      <input type="radio" name="filter" id="filter-done" value="done" />
+      <label for="filter-done">Done To-Dos.</label>
+      <input type="radio" name="filter" id="filter-all" value="all" />
+      <label for="filter-all">All To-Dos.</label>
+    </div>
+    <button id="btn-delete-all">Delete all done tasks</button>
     <ul id="todo-list"></ul>
-    <button id="add-todo">Add To-do</button>
     <script src="script.js"></script>
   </body>
 </html>

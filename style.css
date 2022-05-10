@@ -1,0 +1,18 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --paradise-pink: #ef476f;
+  --honey-yellow: #f5ab00;
+  --carribean-green: #06d6a0;
+  --blue-ncs: #118ab2;
+  --midnight-green-eagle-green: #073b4c;
+  --background-color: #f5f5f5;
+  --white: #ffffff;
+  --font-family: sans-serif;
+}
