@@ -16,3 +16,11 @@
   --white: #ffffff;
   --font-family: sans-serif;
 }
+
+.done-todo {
+  text-decoration: line-through;
+}
+
+input[type="text"] {
+  all: unset;
+}
