@@ -33,12 +33,7 @@ function checkFilterForToDo(toDo) {
 
 function renderSingleToDo(toDo) {
   const toDoList = document.querySelector("#todo-list");
-
   const toDoLi = document.createElement("li");
-
-  if (toDo.done === true) {
-    toDoLi.style.textDecoration = "line-through";
-  }
 
   const toDoCheckbox = document.createElement("input");
   toDoCheckbox.type = "checkbox";
@@ -49,12 +44,14 @@ function renderSingleToDo(toDo) {
     updateLocalStorage();
   });
 
-  toDoLi.appendChild(toDoCheckbox);
+  if (toDo.done === true) {
+    toDoLi.style.textDecoration = "line-through";
+  }
 
+  toDoLi.appendChild(toDoCheckbox);
   toDoList.appendChild(toDoLi);
 
   const editInput = document.createElement("input");
-
   editInput.value = toDo.description;
   editInput.style.width = "min-content";
   editInput.readOnly = true;
@@ -62,7 +59,18 @@ function renderSingleToDo(toDo) {
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
 
-  editBtn.addEventListener("click", () => {
+  toDoLi.appendChild(editInput);
+  toDoLi.appendChild(editBtn);
+
+  editBtn.addEventListener("click", editToDo);
+
+  const toDoLabel = document.querySelector('label[for="new-todo"]');
+  toDoLabel.addEventListener("click", changeDoneStyle);
+  toDoList.addEventListener("change", changeDoneStyle);
+
+  function editToDo() {
+    toDo.description = editInput.value;
+
     if (editBtn.textContent === "Edit") {
       editInput.readOnly = false;
       editBtn.textContent = "Save";
@@ -70,10 +78,8 @@ function renderSingleToDo(toDo) {
       editBtn.textContent = "Edit";
       editInput.readOnly = true;
 
-      toDo.description = editInput.value;
-
       if (editInput.value.length < 5) {
-        alert("Please insert more than 5 characters.");
+        alert("Please insert at least 5 characters.");
         editInput.readOnly = false;
         editBtn.textContent = "Save";
       } else {
@@ -81,11 +87,7 @@ function renderSingleToDo(toDo) {
         renderToDoApp();
       }
     }
-  });
-
-  toDoLi.appendChild(editInput);
-
-  toDoList.appendChild(editBtn);
+  }
 
   if (toDoCheckbox.checked === true) {
     toDoCheckbox.nextElementSibling.style.textDecoration = "line-through";
@@ -121,9 +123,6 @@ function addToDo() {
   }
 }
 
-renderToDoApp();
-updateLocalStorage();
-
 const toDoFilters = document.querySelector("#filter");
 toDoFilters.addEventListener("change", (e) => {
   renderToDoApp();
@@ -133,8 +132,6 @@ function getCurrentFilter() {
   return document.querySelector('input[name="filter"]:checked').value;
 }
 
-renderToDoApp();
-
 const btnDeleteAll = document.querySelector("#btn-delete-all");
 btnDeleteAll.addEventListener("click", (e) => {
   toDos = toDos.filter((toDo) => !toDo.done);
@@ -143,22 +140,25 @@ btnDeleteAll.addEventListener("click", (e) => {
 });
 
 function changeDoneStyle(e) {
+  console.log(e.target);
   if (e.target.checked === true) {
     e.target.nextElementSibling.style.textDecoration = "line-through";
   } else {
-    e.target.nextElementSibling.style.textDecoration = "none";
+    e.target.nextElementSibling.style.textDecoration = "";
   }
 }
 
-const toDoList = document.querySelector("#todo-list");
-toDoList.addEventListener("change", changeDoneStyle);
+renderToDoApp();
+updateLocalStorage();
+
+//Debug ✅
 
 //Another option
 /*
 function renderToDos() {
   const toDoList = document.querySelector("#todo-list");
   toDoList.innerHTML = "";
-
+  
   todos.forEach((todo) => {
     const toDoLi = document.createElement("li");
 
