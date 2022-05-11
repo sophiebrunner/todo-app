@@ -55,6 +55,11 @@ function renderSingleToDo(toDo) {
   editInput.value = toDo.description;
   editInput.style.width = "min-content";
   editInput.readOnly = true;
+  editInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      editToDo();
+    }
+  });
 
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
