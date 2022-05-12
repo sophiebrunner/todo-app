@@ -33,38 +33,39 @@ function checkFilterForToDo(toDo) {
 
 function renderSingleToDo(toDo) {
   const toDoList = document.querySelector("#todo-list");
+
   const toDoLi = document.createElement("li");
+  toDoLi.classList.add("todo-list__element");
+  toDoList.appendChild(toDoLi);
+
+  const styleInput = document.createElement("div");
+  styleInput.classList.add("style-input");
+  toDoLi.appendChild(styleInput);
 
   const toDoCheckbox = document.createElement("input");
   toDoCheckbox.type = "checkbox";
   toDoCheckbox.checked = toDo.done;
-
+  toDoCheckbox.classList.add("checkbox");
   toDoCheckbox.addEventListener("change", () => {
     toDo.done = !toDo.done;
     updateLocalStorage();
   });
-
-  if (toDo.done === true) {
-    toDoLi.style.textDecoration = "line-through";
-  }
-
-  toDoLi.appendChild(toDoCheckbox);
-  toDoList.appendChild(toDoLi);
+  styleInput.appendChild(toDoCheckbox);
 
   const editInput = document.createElement("input");
+  editInput.classList.add("todo-description");
   editInput.value = toDo.description;
-  editInput.style.width = "min-content";
   editInput.readOnly = true;
   editInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       editToDo();
     }
   });
+  styleInput.appendChild(editInput);
 
   const editBtn = document.createElement("button");
   editBtn.textContent = "Edit";
-
-  toDoLi.appendChild(editInput);
+  editBtn.classList.add("edit-button");
   toDoLi.appendChild(editBtn);
 
   editBtn.addEventListener("click", editToDo);
@@ -145,11 +146,10 @@ btnDeleteAll.addEventListener("click", (e) => {
 });
 
 function changeDoneStyle(e) {
-  console.log(e.target);
   if (e.target.checked === true) {
     e.target.nextElementSibling.style.textDecoration = "line-through";
   } else {
-    e.target.nextElementSibling.style.textDecoration = "";
+    e.target.nextElementSibling.style.textDecoration = "none";
   }
 }
 

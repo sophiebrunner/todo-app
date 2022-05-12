@@ -15,32 +15,35 @@
   --background-color: #f5f5f5;
   --white: #ffffff;
   --font-family: sans-serif;
-  --breakpoint-smartphone: 43rem;
-  --breakpoint-tablet: 62rem;
-  --breakpoint-desktop: 82rem;
+  --breakpoint-smartphone: 576px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 992px;
+  --input-padding: 0.5em;
+  font-size: 20px;
 }
 
 body {
   height: 100%;
-  overflow: hidden;
+}
+
+main {
+  background-color: var(--background-color);
 }
 
 .page-header {
-  padding: 4vw;
+  padding: 3em;
   text-align: center;
   background-color: var(--paradise-pink);
 }
 
 h1 {
-  font-size: 4vw;
+  font-size: 2rem;
   color: var(--white);
-  text-shadow: 1px 1px var(--midnight-green-eagle-green),
-    2px 2px var(--honey-yellow);
+  text-shadow: 2px 2px var(--blue-ncs), 4px 4px var(--honey-yellow);
 }
 
-main {
-  border: 1px solid red;
-  max-width: var(--breakpoint-smartphone);
+.to-do-ui {
+  max-width: 35ch;
   margin: auto;
   height: 100vh;
   display: flex;
@@ -48,12 +51,138 @@ main {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 2em 0;
-  gap: 2rem;
+  gap: 3rem;
+  background-color: var(--background-color);
+}
+
+#new-todo {
+  width: 15em;
+  font-size: 1rem;
+  padding: var(--input-padding);
+  border: hidden;
+  border-radius: 5px;
+  margin-right: 0.5em;
+}
+
+#new-todo:focus-within {
+  outline: 1.5px solid var(--honey-yellow);
+}
+
+#filter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .filter {
   display: grid;
-  grid-template-columns: auto 1rem;
+  grid-template-columns: auto auto;
   justify-content: start;
   align-items: center;
+  column-gap: 0.3em;
+  row-gap: 0.3em;
+}
+
+#add-todo,
+#btn-delete-all,
+.edit-button {
+  padding: var(--input-padding);
+  border-radius: 5px;
+  border: hidden;
+  box-shadow: 3px 3px var(--paradise-pink);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--blue-ncs);
+  cursor: pointer;
+}
+
+#add-todo:focus-within,
+#btn-delete-all:focus-within,
+.edit-button:focus-within {
+  outline: 1.5px solid var(--honey-yellow);
+}
+
+.filter-button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid black;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.025s ease-in;
+}
+
+.filter-button:checked {
+  background-color: var(--blue-ncs);
+}
+
+.filter-button:focus-within {
+  border: 1.5px solid var(--honey-yellow);
+}
+
+.checkbox {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 0.1em solid black;
+  cursor: pointer;
+  background-color: white;
+}
+
+.checkbox::after {
+  content: "";
+  width: 3.5em;
+  background-color: var(--white);
+}
+
+.checkbox:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false' %3E%3Cpath fill='none' stroke='white' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' /%3E%3C/svg%3E");
+  background-color: var(--carribean-green);
+}
+
+#todo-list {
+  list-style: none;
+}
+
+.todo-list__element {
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+  margin: 0.5em 0em;
+  border-radius: 5px;
+}
+
+.style-input {
+  display: flex;
+  justify-items: flex-start;
+  gap: 1em;
+  align-items: center;
+  background-color: var(--white);
+  padding-left: 0.5em;
+  border-radius: 5px;
+}
+
+.todo-description {
+  width: calc(35ch - 4.7em);
+  font-size: 1rem;
+  border: hidden;
+  border-radius: 5px;
+  padding: var(--input-padding);
+}
+
+.todo-description:focus-within {
+  outline: 1.5px solid var(--honey-yellow);
+}
+
+.edit-button {
+  width: 4em;
+  text-decoration: none;
 }

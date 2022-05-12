@@ -10,41 +10,56 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="page-header"><h1>Just another To-do-App</h1></header>
+    <header class="page-header"><h1>To-do-App</h1></header>
     <main>
-      <section class="add-todos">
-        <input
-          type="text"
-          id="new-todo"
-          required
-          minlength="5"
-          placeholder="Get sh*t done!"
-        />
-        <label for="new-todo"></label>
-        <button id="add-todo">Add</button>
-      </section>
-      <section id="filter">
-        <h2>Filter & Options</h2>
-        <div class="filter">
-          <input type="radio" name="filter" id="filter-all" value="all" />
-          <label for="filter-all">All</label>
+      <div class="to-do-ui">
+        <section class="add-todos">
           <input
-            type="radio"
-            name="filter"
-            id="filter-open"
-            value="open"
-            checked="checked"
+            type="text"
+            id="new-todo"
+            required
+            minlength="5"
+            placeholder="Get sh*t done!"
           />
-          <label for="filter-open">Open</label>
-          <input type="radio" name="filter" id="filter-done" value="done" />
-          <label for="filter-done">Done</label>
-        </div>
-      </section>
-      <button id="btn-delete-all">Remove Done To-Dos</button>
-      <section class="your-todos">
-        <h2>Your To-Dos</h2>
-        <ul id="todo-list"></ul>
-      </section>
+          <label for="new-todo"></label>
+          <button id="add-todo">Add</button>
+        </section>
+        <section id="filter">
+          <h2>Filter & Options</h2>
+          <div class="filter">
+            <input
+              type="radio"
+              name="filter"
+              id="filter-all"
+              class="filter-button"
+              value="all"
+            />
+            <label for="filter-all">All</label>
+            <input
+              type="radio"
+              name="filter"
+              id="filter-open"
+              class="filter-button"
+              value="open"
+              checked="checked"
+            />
+            <label for="filter-open">Open</label>
+            <input
+              type="radio"
+              name="filter"
+              id="filter-done"
+              class="filter-button"
+              value="done"
+            />
+            <label for="filter-done">Done</label>
+          </div>
+          <button id="btn-delete-all">Remove Done To-Dos</button>
+        </section>
+        <section class="your-todos">
+          <h2>Your To-Dos</h2>
+          <ul id="todo-list"></ul>
+        </section>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
