@@ -24,15 +24,19 @@
 
 body {
   height: 100%;
+  display: grid;
+  grid-template-rows: 15% 85%;
 }
 
 main {
   background-color: var(--background-color);
+  height: 100vh;
 }
 
 .page-header {
-  padding: 3em;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--paradise-pink);
 }
 
@@ -45,23 +49,21 @@ h1 {
 .to-do-ui {
   max-width: 35ch;
   margin: auto;
-  height: 100vh;
+  padding: 2em 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 2em 0;
   gap: 3rem;
-  background-color: var(--background-color);
 }
 
 #new-todo {
   width: 15em;
-  font-size: 1rem;
-  padding: var(--input-padding);
+  margin-right: 0.5em;
   border: hidden;
   border-radius: 5px;
-  margin-right: 0.5em;
+  padding: var(--input-padding);
+  font-size: 1rem;
 }
 
 #new-todo:focus-within {
@@ -89,8 +91,8 @@ h1 {
 #btn-delete-all,
 .edit-button {
   padding: var(--input-padding);
-  border-radius: 5px;
   border: hidden;
+  border-radius: 5px;
   box-shadow: 3px 3px var(--paradise-pink);
   font-size: 1rem;
   font-weight: 700;
@@ -113,9 +115,9 @@ h1 {
   height: 1em;
   border-radius: 50%;
   border: 2px solid black;
-  cursor: pointer;
   background-color: transparent;
   transition: background-color 0.025s ease-in;
+  cursor: pointer;
 }
 
 .filter-button:checked {
@@ -133,14 +135,8 @@ h1 {
   width: 1em;
   height: 1em;
   border: 0.1em solid black;
-  cursor: pointer;
   background-color: white;
-}
-
-.checkbox::after {
-  content: "";
-  width: 3.5em;
-  background-color: var(--white);
+  cursor: pointer;
 }
 
 .checkbox:checked {
@@ -152,30 +148,34 @@ h1 {
   list-style: none;
 }
 
+.your-todos > h2 {
+  margin-bottom: 1em;
+}
+
 .todo-list__element {
+  margin: 1em 0em;
   display: flex;
   gap: 0.4em;
   align-items: center;
-  margin: 0.5em 0em;
   border-radius: 5px;
 }
 
 .style-input {
+  border-radius: 5px;
+  padding-left: 0.5em;
   display: flex;
   justify-items: flex-start;
-  gap: 1em;
   align-items: center;
+  gap: 1em;
   background-color: var(--white);
-  padding-left: 0.5em;
-  border-radius: 5px;
 }
 
 .todo-description {
   width: calc(35ch - 4.7em);
-  font-size: 1rem;
   border: hidden;
   border-radius: 5px;
   padding: var(--input-padding);
+  font-size: 1rem;
 }
 
 .todo-description:focus-within {
@@ -184,5 +184,4 @@ h1 {
 
 .edit-button {
   width: 4em;
-  text-decoration: none;
 }

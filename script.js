@@ -67,7 +67,6 @@ function renderSingleToDo(toDo) {
   editBtn.textContent = "Edit";
   editBtn.classList.add("edit-button");
   toDoLi.appendChild(editBtn);
-
   editBtn.addEventListener("click", editToDo);
 
   const toDoLabel = document.querySelector('label[for="new-todo"]');
@@ -123,7 +122,6 @@ function addToDo() {
   } else {
     toDos.push(newToDo);
     updateLocalStorage();
-
     newToDoInput.value = "";
     renderToDoApp();
   }
