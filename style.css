@@ -24,8 +24,6 @@
 
 body {
   height: 100%;
-  display: grid;
-  grid-template-rows: 15% 85%;
 }
 
 main {
@@ -34,6 +32,7 @@ main {
 }
 
 .page-header {
+  height: 5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,7 +152,7 @@ h1 {
 }
 
 .todo-list__element {
-  margin: 1em 0em;
+  margin: 0.5em 0em;
   display: flex;
   gap: 0.4em;
   align-items: center;
