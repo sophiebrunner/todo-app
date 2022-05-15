@@ -70,8 +70,8 @@ function renderSingleToDo(toDo) {
   editBtn.addEventListener("click", editToDo);
 
   const toDoLabel = document.querySelector('label[for="new-todo"]');
+  toDoCheckbox.addEventListener("click", changeDoneStyle);
   toDoLabel.addEventListener("click", changeDoneStyle);
-  toDoList.addEventListener("change", changeDoneStyle);
 
   function editToDo() {
     toDo.description = editInput.value;
